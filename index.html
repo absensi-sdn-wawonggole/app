@@ -51,7 +51,7 @@
 
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background: #C9C5F5;
+            background: var(--bg);
             display: flex;
             justify-content: center;
             align-items: flex-start;
@@ -63,13 +63,13 @@
 
         .phone {
             width: 100%;
-            max-width: 390px;
+            max-width: 100%;
             min-height: 100vh;
             min-height: 100dvh;
             background: var(--bg);
             position: relative;
-            overflow: hidden;
-            box-shadow: 0 0 100px rgba(0, 0, 0, .22);
+            overflow: auto;
+            box-shadow: none;
             display: flex;
             flex-direction: column;
             padding-top: env(safe-area-inset-top);
@@ -562,20 +562,20 @@
             display: none;
             position: fixed;
             bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
+            left: 0;
             width: 100%;
-            max-width: 390px;
+            max-width: 100%;
             background: rgba(255, 255, 255, .96);
             backdrop-filter: blur(24px);
             -webkit-backdrop-filter: blur(24px);
-            padding: 10px 8px 26px;
+            padding: 10px 8px calc(26px + env(safe-area-inset-bottom));
             border-radius: 28px 28px 0 0;
             box-shadow: 0 -4px 32px rgba(108, 99, 255, .1);
             z-index: 100;
             justify-content: space-around;
             align-items: center;
             border-top: 1.5px solid rgba(108, 99, 255, .08);
+            transform: none;
         }
 
         #bottom-nav.visible {
@@ -1584,7 +1584,7 @@
 
         .modal-sheet {
             width: 100%;
-            max-width: 390px;
+            max-width: 100%;
             background: white;
             border-radius: 28px 28px 0 0;
             padding: 20px 24px 40px;
