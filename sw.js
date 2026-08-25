@@ -1,9 +1,9 @@
 const CACHE_NAME = 'epresensi-cache-v3';
 const ASSETS_TO_CACHE = [
-  '/',
-  '/index.html',
-  '/manifest.json',
-  '/logo.png',
+  './',
+  './index.html',
+  './manifest.json',
+  './logo.png',
   'https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700;1,800&display=swap',
   'https://unpkg.com/html5-qrcode'
 ];
