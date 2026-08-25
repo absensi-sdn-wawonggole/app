@@ -30,9 +30,16 @@ self.addEventListener('activate', (event) => {
 
 // 3. Intercept Fetch (Offline Support)
 self.addEventListener('fetch', (event) => {
+  const url = new URL(event.request.url);
   // Hanya intercept GET request (Abaikan Firebase Database requests)
-  if (event.request.method !== 'GET' || event.request.url.includes('firebasedatabase')) return;
-  
+  if (
+    event.request.method !== 'GET' ||
+    !url.protocol.startsWith('http') ||
+    event.request.url.includes('firebasedatabase')
+  ) {
+    return;
+  }
+
   event.respondWith(
     caches.match(event.request).then((cachedResponse) => {
       return cachedResponse || fetch(event.request).then(fetchResponse => {
@@ -41,7 +48,7 @@ self.addEventListener('fetch', (event) => {
           return fetchResponse;
         });
       });
-    }).catch(() => caches.match('/index.html')) // Fallback offline
+    }).catch(() => caches.match('./index.html'))
   );
 });
 
